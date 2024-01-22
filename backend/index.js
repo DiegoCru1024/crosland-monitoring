@@ -13,6 +13,9 @@ dbDriver.connectDB().then(() => {
 })
 
 const hourInterval = 1000 * 60 * 60
+scheduledTest().then(() => {
+    console.log('Primer test ejecutado.')
+})
 setInterval(scheduledTest, hourInterval)
 
 const dailyInterval = 1000 * 60 * 60 * 24

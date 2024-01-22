@@ -1,0 +1,42 @@
+const {resultModel} = require("../models/resultModel");
+const {resumeModel} = require("../models/resumeModel");
+const uuid = require("uuid");
+const domains = ['prod-protuner.samishop.pe', 'prod-kawasaki.samishop.pe', 'prod-croslandstore.samishop.pe'];
+
+async function generateDailyResume() {
+    for (const domain of domains) {
+        await domainResume(domain)
+    }
+}
+
+async function domainResume(domain) {
+    try {
+        let sum = 0
+        const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+
+        const dailyResults = await resultModel.find({domain: domain, date: {$gte: twentyFourHoursAgo}}, {
+            __v: 0,
+            _id: 0
+        }, null).exec()
+
+        for (const result of dailyResults) {
+            sum += result.performance
+        }
+
+        const prom = sum / dailyResults.length
+
+        const newResume = {
+            domain: domain,
+            date: new Date().toISOString(),
+            resumeId: uuid.v4(),
+            dailyScore: prom
+        }
+
+        await new resumeModel(newResume).save()
+
+    } catch (error) {
+        console.log(`[ERROR] No se pudo generar el resumen diario para ${domain}`)
+    }
+}
+
+module.exports = {generateDailyResume}

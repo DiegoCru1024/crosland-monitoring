@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom/client';
 import styles from './index.module.scss'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Dashboard from "./components/dashboard/dashboard";
+import Dashboard from "./pages/dashboard/dashboard";
 import Sidebar from "./components/sidebar/sidebar";
-import Monitoring from "./components/monitoring/monitoring";
+import Monitoring from "./pages/monitoring/monitoring";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -11,8 +11,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <div className={styles.indexContainer}>
-        <Sidebar/>
         <BrowserRouter>
+            <Sidebar/>
             <Routes>
                 <Route path={'/'} element={<Dashboard/>}/>
                 <Route path={'/monitoring/:domain'} element={<Monitoring/>}/>

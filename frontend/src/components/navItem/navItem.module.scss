@@ -1,0 +1,23 @@
+.navItemContainer {
+  padding: 1rem;
+  transition: ease-in-out 0.25s;
+
+  h3, p {
+    margin: 0;
+  }
+
+  p {
+    font-style: italic;
+    color: dimgray;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: #9bc5eb;
+    transition: ease-in-out 0.25s;
+  }
+}

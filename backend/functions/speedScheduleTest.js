@@ -14,8 +14,10 @@ async function speedTest(domain) {
     const url_mobile = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://${domain}&strategy=mobile&key=${process.env.API_KEY}`;
 
     try {
-        const response_desktop = await axios.get(url_desktop);
-        const response_mobile = await axios.get(url_mobile);
+        const [response_desktop, response_mobile] = await Promise.all([
+            axios.get(url_desktop),
+            axios.get(url_mobile)
+        ]);
 
         const newResult = {
             domain: domain,

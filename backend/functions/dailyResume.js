@@ -32,8 +32,8 @@ async function domainResume(domain) {
             domain: domain,
             date: new Date().toISOString(),
             resumeId: uuid.v4(),
-            dailyScore_desktop: prom_desktop,
-            dailyScore_mobile: prom_mobile
+            dailyScore_desktop: prom_desktop.toFixed(2),
+            dailyScore_mobile: prom_mobile.toFixed(2)
         }
 
         await new resumeModel(newResume).save()

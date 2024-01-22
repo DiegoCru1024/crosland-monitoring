@@ -19,7 +19,7 @@ router.get('/domainData', async (req, res) => {
     }
 
     try {
-        const domainResults = await resultModel.findOne({domain: domain}, {__v: 0, _id: 0}, null).exec()
+        const domainResults = await resultModel.find({domain: domain}, {__v: 0, _id: 0}, null).exec()
 
         if (!domainResults) {
             return res.status(200).send({message: 'No se encontraron datos.'})

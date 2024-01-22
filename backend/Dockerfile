@@ -1,6 +1,6 @@
-FROM node:20
+FROM node:latest
 
-WORKDIR /app
+WORKDIR /usr/src/appCrosland
 
 COPY package*.json ./
 
@@ -12,4 +12,4 @@ EXPOSE 5000
 
 ENV NODE_ENV production
 
-CMD ["node", "index.js"]
+CMD ["npm", "start"]

@@ -12,7 +12,7 @@ router.get('/dashboardData', async (req, res) => {
 })
 
 router.get('/domainData', async (req, res) => {
-    const {domain} = req.query.domain
+    const {domain} = req.query
 
     if (!domain) {
         res.status(400).send({error: 'Se requiere un dominio válido.'})

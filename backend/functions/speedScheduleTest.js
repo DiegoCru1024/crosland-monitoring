@@ -10,16 +10,19 @@ async function scheduledTest() {
 }
 
 async function speedTest(domain) {
-    const url = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://${domain}&key=${process.env.API_KEY}`;
+    const url_desktop = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://${domain}&strategy=desktop&key=${process.env.API_KEY}`;
+    const url_mobile = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://${domain}&strategy=mobile&key=${process.env.API_KEY}`;
 
     try {
-        const response = await axios.get(url);
+        const response_desktop = await axios.get(url_desktop);
+        const response_mobile = await axios.get(url_mobile);
 
         const newResult = {
             domain: domain,
             date: new Date().toISOString(),
             testId: uuid.v4(),
-            performance: response.data.lighthouseResult.categories.performance.score
+            performance_desktop: response_desktop.data.lighthouseResult.categories.performance.score,
+            performance_mobile: response_mobile.data.lighthouseResult.categories.performance.score
         };
 
         await new resultModel(newResult).save();

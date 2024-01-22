@@ -11,7 +11,8 @@ async function generateDailyResume() {
 
 async function domainResume(domain) {
     try {
-        let sum = 0
+        let sum_desktop = 0
+        let sum_mobile = 0
         const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
 
         const dailyResults = await resultModel.find({domain: domain, date: {$gte: twentyFourHoursAgo}}, {
@@ -20,16 +21,19 @@ async function domainResume(domain) {
         }, null).exec()
 
         for (const result of dailyResults) {
-            sum += result.performance
+            sum_desktop += result.performance_desktop
+            sum_mobile += result.performance_mobile
         }
 
-        const prom = sum / dailyResults.length
+        const prom_desktop = sum_desktop / dailyResults.length
+        const prom_mobile = sum_mobile / dailyResults.length
 
         const newResume = {
             domain: domain,
             date: new Date().toISOString(),
             resumeId: uuid.v4(),
-            dailyScore: prom
+            dailyScore_desktop: prom_desktop,
+            dailyScore_mobile: prom_mobile
         }
 
         await new resumeModel(newResume).save()

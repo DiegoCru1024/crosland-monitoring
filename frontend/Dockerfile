@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR usr/src/front-app
+WORKDIR usr/src/app
 
 COPY package*.json ./
 
@@ -12,4 +12,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npx", "serve", "-l", "3000", "./build"]

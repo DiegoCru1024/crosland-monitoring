@@ -10,6 +10,8 @@ COPY . .
 
 RUN npm run build
 
+COPY . .
+
 EXPOSE 3000
 
-CMD ["npx", "serve", "-l", "3000", "./build"]
+CMD ["npx", "serve", "-s", "build", "-l", "3000"]

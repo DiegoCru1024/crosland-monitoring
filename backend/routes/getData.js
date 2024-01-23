@@ -11,7 +11,27 @@ router.get('/dashboardData', async (req, res) => {
     }
 })
 
-router.get('/domainData', async (req, res) => {
+router.get('/resumeData', async (req, res) => {
+    const {domain} = req.query
+
+    if (!domain) {
+        return res.status(400).send({error: 'Se requiere un dominio válido.'})
+    }
+
+    try {
+        const domainResults = await resumeModel.find({domain: domain}, {__v: 0, _id: 0}, null).exec()
+
+        if (!domainResults) {
+            return res.status(200).send({message: 'No se encontraron datos.'})
+        }
+
+        res.status(200).send({message: 'Datos encontrados.', results: domainResults})
+    } catch (error) {
+        res.status(500).send({error: error})
+    }
+})
+
+router.get('/resultData', async (req, res) => {
     const {domain} = req.query
 
     if (!domain) {

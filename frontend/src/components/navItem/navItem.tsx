@@ -11,13 +11,17 @@ const NavItem: React.FC<NavItemProps> = ({label, domain}) => {
     return (
         <div className={styles.navItemContainer}>
             {domain ? (
-                <Link to={`/monitoring/${domain}`}>
-                    <h3>{label}</h3>
-                    <p>{domain}</p>
+                <Link to={`/monitoring/${domain}`} className={styles.link}>
+                    <div>
+                        <h3>{label}</h3>
+                        <p>{domain}</p>
+                    </div>
                 </Link>
             ) : (
                 <Link to={`/`}>
-                    <h3>{label}</h3>
+                    <div>
+                        <h3>{label}</h3>
+                    </div>
                 </Link>
             )}
 

@@ -85,6 +85,7 @@ const LastResultInfo: React.FC<lastResultProps> = ({lastResume}) => {
                             responsive: true
                         }}
                     />
+                    <h1>{mobilePercentage.toFixed(0)}</h1>
                 </div>
                 <div>
                     <Doughnut
@@ -109,6 +110,7 @@ const LastResultInfo: React.FC<lastResultProps> = ({lastResume}) => {
                             responsive: true
                         }}
                     />
+                    <h1>{desktopPercentage.toFixed(0)}</h1>
                 </div>
             </div>
         </div>

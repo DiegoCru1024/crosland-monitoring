@@ -17,11 +17,19 @@
   width: 100%;
 
   div {
+    position: relative;
     text-align: center;
     width: 40%;
 
     p {
       margin: 0;
+    }
+
+    h1 {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 }

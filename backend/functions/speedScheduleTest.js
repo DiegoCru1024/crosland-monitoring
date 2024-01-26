@@ -1,7 +1,7 @@
 const axios = require("axios");
 const uuid = require('uuid')
 const {resultModel} = require("../models/resultModel");
-const domains = ['prod-protuner.samishop.pe', 'prod-kawasaki.samishop.pe', 'prod-croslandstore.samishop.pe'];
+const domains = ['prod-protuner.samishop.pe', 'prod-kawasaki.samishop.pe', 'prod-croslandstore.samishop.pe', 'prod-rok.samishop.pe'];
 
 async function scheduledTest() {
     for (const domain of domains) {

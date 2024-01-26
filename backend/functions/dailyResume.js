@@ -1,7 +1,7 @@
 const {resultModel} = require("../models/resultModel");
 const {resumeModel} = require("../models/resumeModel");
 const uuid = require("uuid");
-const domains = ['prod-protuner.samishop.pe', 'prod-kawasaki.samishop.pe', 'prod-croslandstore.samishop.pe', 'prod-rok.samishop.pe'];
+const domains = ['protuner.pe', 'kawasaki.com.pe', 'croslandstore.com.pe', 'prod-rok.samishop.pe'];
 
 async function generateDailyResume() {
     for (const domain of domains) {

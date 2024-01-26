@@ -111,7 +111,7 @@ const MonitoringInfo: React.FC<MonitoringProps> = ({resultData, resumeData}) => 
                     </thead>
                     <tbody>
                     {resultData && resultData.map((item) => (
-                        <tr>
+                        <tr key={item.testId}>
                             <td>{formatDate(item.date.toString())}</td>
                             <td>{item.performance_mobile}</td>
                             <td>{item.performance_desktop}</td>

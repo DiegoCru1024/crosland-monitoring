@@ -20,7 +20,9 @@ interface lastResultProps {
 const LastResultInfo: React.FC<lastResultProps> = ({lastResume}) => {
     if (!lastResume) {
         return (
-            <div></div>
+            <div className={styles.noInfoContainer}>
+                <h1>No hay suficiente información.</h1>
+            </div>
         )
     }
 

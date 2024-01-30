@@ -10,7 +10,7 @@ const Sidebar: React.FC = () => {
             <NavItem label={'Protuner'} domain={'protuner.pe'}></NavItem>
             <NavItem label={'Kawasaki'} domain={'kawasaki.com.pe'}></NavItem>
             <NavItem label={'Croslandstore'} domain={'croslandstore.com.pe'}></NavItem>
-            <NavItem label={'Rok'} domain={'prod-rok.samishop.pe'}></NavItem>
+            <NavItem label={'Rok'} domain={'rok.pe'}></NavItem>
         </div>
     )
 }
